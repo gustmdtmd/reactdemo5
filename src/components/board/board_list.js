@@ -11,11 +11,12 @@ const BoardList = () => {
   const { currentPage } = useParams();
 
   useEffect(() => {
+    console.log('useEffect_cp: ' + currentPage);
     getList(currentPage ? currentPage : 1);
   }, []);
 
   const getList = async (currentPage) => {
-    // console.log(currentPage);
+    console.log('getList_cp: ' + currentPage);
     // 실제 백엔드로 요청하는 url
     await axios.get(baseUrl + '/board/list/' + currentPage).then((response) => {
       //   console.log(response.data);
@@ -23,6 +24,7 @@ const BoardList = () => {
       setPv(response.data.pv);
     });
   };
+
   return (
     <div>
       <Link className='btn btn-danger' to='/board/write'>
@@ -54,7 +56,7 @@ const BoardList = () => {
             return (
               <TableRow
                 board={board}
-                currentPage={currentPage}
+                currentPage={pv.currentPage}
                 key={board.num}
               />
             );
