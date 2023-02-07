@@ -52,26 +52,31 @@ const BoardList = () => {
         {/* 반복문시 for는 사용 X, map 사용! 
           key값 필수(key값은 겹치지 않아야한다.)*/}
         <tbody>
-          {boardList.map((board) => {
-            return (
-              <TableRow
-                board={board}
-                currentPage={pv.currentPage}
-                key={board.num}
-              />
-            );
-          })}
+          {boardList &&
+            boardList.map((board) => {
+              return (
+                <TableRow
+                  board={board}
+                  currentPage={pv.currentPage}
+                  key={board.num}
+                />
+              );
+            })}
         </tbody>
       </table>
       {/* 페이징 처리 */}
-      <PageNavigation
-        currentPage={pv.currentPage}
-        startPage={pv.startPage}
-        endPage={pv.endPage}
-        blockPage={pv.blockPage}
-        totalPage={pv.totalPage}
-        getList={getList}
-      />
+      {pv ? (
+        <PageNavigation
+          currentPage={pv.currentPage}
+          startPage={pv.startPage}
+          endPage={pv.endPage}
+          blockPage={pv.blockPage}
+          totalPage={pv.totalPage}
+          getList={getList}
+        />
+      ) : (
+        ''
+      )}
     </div>
   );
 };
