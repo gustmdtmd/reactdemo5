@@ -8,6 +8,8 @@ import BoardView from './components/board/board_view';
 import BoardWrite from './components/board/board_write';
 import BoardUpdate from './components/board/board_update';
 import JoinForm from './components/login/JoinForm';
+import LoginPage from './components/login/loginPage';
+import LogOut from './components/login/logOut';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <Routes>
         <Route path='/' element={<BaseLayout />}>
           <Route index element={<Home />} />
+          <Route path='login' element={<LoginPage />} />
+          <Route path='logout' element={<LogOut />} />
           <Route path='join' element={<JoinForm />} />
           <Route path='board' element={<BoardList />}>
             <Route path='list/:currentPage' element={<BoardList />} />
