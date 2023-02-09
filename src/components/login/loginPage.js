@@ -32,7 +32,9 @@ const LoginPage = () => {
       .then((response) => {
         // console.log("response:", response.data);
 
-        let jwtToken = response.headers['authorization'];
+        // 아래 둘다 가능한데 [] 일경우 소문자, get() 일경우 대문자 사용
+        //let jwtToken = response.headers['authorization'];
+        let jwtToken = response.headers.get('Authorization');
         let jwtUsername = response.data.username;
 
         console.log('jwtToken', jwtToken);
